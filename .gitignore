@@ -1,0 +1,10 @@
+.env
+.env.*
+*.key
+*.pem
+credentials.*
+secrets.*
+.DS_Store
+Thumbs.db
+private/
+client-data/
