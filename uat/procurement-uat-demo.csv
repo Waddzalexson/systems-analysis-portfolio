@@ -1,0 +1,11 @@
+Test ID,Role,Scenario,Expected Result,Priority
+UAT-001,Requester,Submit complete requisition,Request is submitted and unique reference is generated,Critical
+UAT-002,Requester,Submit requisition with missing purpose,Submission is blocked and validation message is shown,Critical
+UAT-003,Department Head,Approve valid request,Decision is recorded and request moves to next required step,Critical
+UAT-004,Department Head,Reject request without reason,Rejection is blocked until reason is entered,High
+UAT-005,Finance Officer,Record unavailable budget,Request does not proceed to sourcing and reason is visible,High
+UAT-006,Procurement Officer,Record quotation and supplier recommendation,Sourcing evidence remains linked to request,High
+UAT-007,Approver,Approve recommended supplier,Approval is timestamped and request becomes eligible for purchase order,High
+UAT-008,Receiving Officer,Confirm receipt,Receipt user and date are stored,High
+UAT-009,Finance Officer,Complete payment preparation without receipt,System blocks completion when receipt is required,Critical
+UAT-010,Requester,View own request status,Current status and outstanding step are visible without exposing unauthorised requests,High
