@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#114c42">
   <meta name="description" content="Explore and compare schools through a thoughtful, explainable school discovery experience.">
   <title>eSchool Explore | Find a school that fits</title>
-  <link rel="stylesheet" href="styles.css?v=2">
+  <link rel="stylesheet" href="styles.css?v=3">
 </head>
 <body>
   <header class="topbar">
@@ -30,23 +30,20 @@
     <section class="hero">
       <div class="container hero-grid">
         <div class="hero-content">
-          <div class="eyebrow"><span class="eyebrow-circle">✦</span> A simpler school search</div>
+          <div class="eyebrow">EXPLORE SCHOOLS</div>
           <h1>Find a school that <em>fits your child.</em></h1>
-          <p>Explore school options, compare what matters and make your next decision with confidence.</p>
-          <a class="hero-anchor" href="#discover">Start exploring <span aria-hidden="true">↗</span></a>
+          <p>Search by location, fees and curriculum. Compare schools and save the ones you like.</p>
+          <a class="hero-anchor" href="#discover">Browse schools <span aria-hidden="true">↗</span></a>
         </div>
-        <div class="hero-art" aria-hidden="true">
-          <div class="art-sun"></div><div class="art-circle"></div><div class="art-roof"></div><div class="art-roof2"></div>
-          <div class="art-main"><span class="art-window"></span><span class="art-window"></span><span class="art-window"></span><span class="art-window"></span><span class="art-door"></span></div>
-          <div class="art-tree tree-a"><i></i></div><div class="art-tree tree-b"><i></i></div>
-          <div class="art-card"><span class="art-check">✓</span><div><strong>Good matches, clearer choices</strong><small>Compare before you decide</small></div></div>
+        <div class="hero-photo-frame">
+          <img src="https://images.unsplash.com/photo-1764645362980-08d8704fd102?auto=format&amp;fit=crop&amp;w=1400&amp;q=82" alt="Illustrative photograph of a school building surrounded by greenery" fetchpriority="high" decoding="async">
         </div>
       </div>
     </section>
 
     <section class="discovery container" id="discover" aria-labelledby="discover-heading">
       <div class="search-card">
-        <div class="search-heading"><div><span class="section-label">SCHOOL DISCOVERY</span><h2 id="discover-heading">What kind of school are you looking for?</h2></div><span class="search-help">Search by place, level, budget or curriculum</span></div>
+        <div class="search-heading"><div><span class="section-label">FIND A SCHOOL</span><h2 id="discover-heading">What are you looking for?</h2></div><span class="search-help">Search by place, level, budget or curriculum</span></div>
         <form id="search-form" class="search-bar" role="search">
           <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.8"/><path d="m16 16 5 5"/></svg>
           <label class="sr-only" for="question">Describe your ideal school</label>
@@ -67,13 +64,13 @@
           <div class="filter-tip"><span class="tip-icon">i</span><p>Use filters to narrow your choices. Missing fees are not treated as free or affordable.</p></div>
         </aside>
         <div class="content-area">
-          <div class="results-header"><div><span class="section-label">YOUR OPTIONS</span><h2 id="results-heading">Explore schools <span id="results-count">8 schools</span></h2></div><label class="sort-label">Sort by <select id="sort-by"><option value="match">Best match</option><option value="low">Fees: low to high</option><option value="high">Fees: high to low</option><option value="name">School name</option></select></label></div>
+          <div class="results-header"><div><h2 id="results-heading">Explore schools <span id="results-count">8 schools</span></h2></div><label class="sort-label">Sort by <select id="sort-by"><option value="match">Best match</option><option value="low">Fees: low to high</option><option value="high">Fees: high to low</option><option value="name">School name</option></select></label></div>
           <div id="active-filter-label" class="applied-filters" aria-live="polite"></div>
           <div id="results" class="results-grid" aria-live="polite" aria-label="Schools matching your search"></div>
           <div id="empty-state" class="empty-state" hidden><div class="empty-graphic" aria-hidden="true">⌕</div><h3>No schools match those choices</h3><p>Try a different location, budget or school level.</p><button id="reset-empty" type="button">Show all schools</button></div>
         </div>
         <aside class="guide-panel" aria-labelledby="guide-heading">
-          <div class="guide-intro"><span class="guide-icon">✦</span><div><span class="section-label">YOUR SCHOOL GUIDE</span><h2 id="guide-heading">Here to help you choose</h2></div></div>
+          <div class="guide-intro"><div><h2 id="guide-heading">Questions about a school?</h2></div></div>
           <div id="guide-conversation" class="guide-conversation" aria-live="polite"><div class="guide-bubble">Search for a school, then ask me about what you find.</div></div>
           <div class="guide-queries"><button type="button" class="guide-query" data-guide="Which schools have boarding?">Which offer boarding?</button><button type="button" class="guide-query" data-guide="Which schools cost under UGX 4 million?">Under UGX 4 million?</button><button type="button" class="guide-query" data-guide="Do all schools have deadlines?">Are deadlines available?</button></div>
           <form id="guide-form" class="guide-form"><label for="guide-question" class="sr-only">Ask a question about the schools</label><input id="guide-question" maxlength="200" autocomplete="off" placeholder="Ask about schools..."><button type="submit" aria-label="Ask the school guide"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12 20 4l-5 16-3-7-8-1Z"/></svg></button></form>
@@ -81,13 +78,13 @@
       </div>
     </section>
 
-    <section class="how-section" id="how"><div class="container how-grid"><div><span class="section-label">A LITTLE MORE CONFIDENCE</span><h2>From searching to shortlisting in three steps.</h2></div><div class="how-items"><article><span class="step-number">01</span><h3>Find schools</h3><p>Start with your location, preferred level, curriculum and budget.</p></article><article><span class="step-number">02</span><h3>Compare options</h3><p>Save favourites and review fees, boarding and deadlines side by side.</p></article><article><span class="step-number">03</span><h3>Plan your next step</h3><p>Review what is known and prepare for an application.</p></article></div></div></section>
+    <section class="how-section" id="how"><div class="container how-grid"><div><h2>Find, compare and decide.</h2></div><div class="how-items"><article><span class="step-number">01</span><h3>Find schools</h3><p>Start with your location, preferred level, curriculum and budget.</p></article><article><span class="step-number">02</span><h3>Compare options</h3><p>Save favourites and review fees, boarding and deadlines side by side.</p></article><article><span class="step-number">03</span><h3>Plan your next step</h3><p>Review what is known and prepare for an application.</p></article></div></div></section>
   </main>
-  <footer class="footer"><div class="container footer-row"><span><strong>eSchool Explore</strong> · Concept by Alex Wadaba</span><span>Independent portfolio demo using fictional school information. No live admissions or applications.</span></div></footer>
+  <footer class="footer"><div class="container footer-row"><span><strong>eSchool Explore</strong> · Concept by Alex Wadaba</span><span>Fictional schools and illustrative photos. No real applications are submitted.</span></div></footer>
 
   <div id="overlay" class="overlay" hidden><section class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"><div class="modal-header"><h2 id="modal-title">Details</h2><button id="close-modal" type="button" aria-label="Close dialog">×</button></div><div id="modal-content" class="modal-body"></div></section></div>
   <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
   <script id="school-records" type="application/json">[{"id":"sch-001","name":"Acacia Springs Academy","location":"Kampala","curriculum":["Uganda National Curriculum"],"levels":["Primary","Secondary"],"boarding":false,"annual_fee_ugx":3200000,"admissions_open":true,"application_deadline":"2027-01-15","description":"A day school with science clubs, active learning and regular parent updates.","highlights":["Science clubs","Parent updates"],"verified_fields":["location","curriculum","levels","boarding","annual_fee_ugx","admissions_open","application_deadline"]},{"id":"sch-002","name":"Hillside Grove International","location":"Wakiso","curriculum":["Cambridge"],"levels":["Primary","Secondary"],"boarding":true,"annual_fee_ugx":7800000,"admissions_open":true,"application_deadline":null,"description":"Cambridge curriculum with boarding facilities, performing arts and sports.","highlights":["Boarding","Performing arts"],"verified_fields":["location","curriculum","levels","boarding","annual_fee_ugx","admissions_open"]},{"id":"sch-003","name":"Little River Learning House","location":"Kampala","curriculum":["Early Years"],"levels":["Nursery"],"boarding":false,"annual_fee_ugx":null,"admissions_open":false,"application_deadline":null,"description":"Early years learning focused on play, language and family communication.","highlights":["Early years","Play-based"],"verified_fields":["location","curriculum","levels","boarding","admissions_open"]},{"id":"sch-004","name":"Juniper Hills School","location":"Entebbe","curriculum":["Uganda National Curriculum"],"levels":["Primary"],"boarding":false,"annual_fee_ugx":2600000,"admissions_open":true,"application_deadline":"2027-02-01","description":"A welcoming primary school with literacy programmes and small-group support.","highlights":["Literacy","Small-group support"],"verified_fields":["location","curriculum","levels","boarding","annual_fee_ugx","admissions_open","application_deadline"]},{"id":"sch-005","name":"Mivule International Academy","location":"Kampala","curriculum":["Cambridge"],"levels":["Secondary"],"boarding":true,"annual_fee_ugx":9200000,"admissions_open":false,"application_deadline":null,"description":"Secondary studies with laboratory facilities, clubs and residential options.","highlights":["Laboratory","Residential"],"verified_fields":["location","curriculum","levels","boarding","annual_fee_ugx","admissions_open"]},{"id":"sch-006","name":"Tendo Valley Primary","location":"Kampala","curriculum":["Uganda National Curriculum"],"levels":["Primary"],"boarding":false,"annual_fee_ugx":1800000,"admissions_open":true,"application_deadline":null,"description":"An accessible primary option with reading clubs and activity-based lessons.","highlights":["Reading clubs","Affordable fees"],"verified_fields":["location","curriculum","levels","boarding","annual_fee_ugx","admissions_open"]},{"id":"sch-007","name":"Cedarbrook Scholars School","location":"Wakiso","curriculum":["Uganda National Curriculum"],"levels":["Primary"],"boarding":false,"annual_fee_ugx":3900000,"admissions_open":true,"application_deadline":"2026-12-18","description":"Primary education with structured assessment and co-curricular clubs.","highlights":["Co-curricular","Assessment updates"],"verified_fields":["location","curriculum","levels","boarding","annual_fee_ugx","admissions_open","application_deadline"]},{"id":"sch-008","name":"Sapphire Horizon School","location":"Jinja","curriculum":["Uganda National Curriculum"],"levels":["Secondary"],"boarding":true,"annual_fee_ugx":4800000,"admissions_open":true,"application_deadline":"2027-01-29","description":"A boarding secondary school offering practical sciences and team sports.","highlights":["Practical sciences","Team sports"],"verified_fields":["location","curriculum","levels","boarding","annual_fee_ugx","admissions_open","application_deadline"]}]</script>
-  <script src="app.js?v=2" defer></script>
+  <script src="app.js?v=3" defer></script>
 </body>
 </html>
