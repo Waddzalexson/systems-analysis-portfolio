@@ -2,6 +2,20 @@
   'use strict';
   const records = JSON.parse(document.getElementById('school-records').textContent || '[]');
   const byId = Object.fromEntries(records.map(s => [s.id, s]));
+  // Illustrative Unsplash imagery. Images do not depict these fictional schools.
+  const PHOTO_IDS = {
+    'sch-001': 'photo-1751831307214-f6ce5850e4da',
+    'sch-002': 'photo-1775830443809-98bedaaf6a6e',
+    'sch-003': 'photo-1757193714669-875a0b0faf45',
+    'sch-004': 'photo-1764645362980-08d8704fd102',
+    'sch-005': 'photo-1759641801965-a15a53b877b4',
+    'sch-006': 'photo-1691397763553-f28f780faaec',
+    'sch-007': 'photo-1757193714692-44cdf07a5377',
+    'sch-008': 'photo-1764728671460-34931d8261f5'
+  };
+  function photoUrl(school) {
+    return 'https://images.unsplash.com/' + (PHOTO_IDS[school.id] || PHOTO_IDS['sch-001']) + '?auto=format&fit=crop&w=1000&q=78';
+  }
   const $ = id => document.getElementById(id);
   const apiEnabled = Boolean(document.querySelector('meta[name="demo-api"][content="enabled"]'));
   const state = {saved:new Set(readIds()), compare:new Set(), current:[], view:'all', api:apiEnabled, searchSeq:0};
@@ -40,7 +54,12 @@
   function textTag(label){return elm('span','tag',label)}
   function status(s){if(!known(s,'admissions_open'))return ['Not confirmed','unknown'];return s.admissions_open?['Admissions open','open']:['Admissions closed','closed']}
   function schoolCard(s,index){const card=elm('article','school-card');card.dataset.schoolId=s.id;
-    const visual=elm('div','school-visual theme-'+((index%4)+1));const building=elm('span','school-shape');building.append(elm('i'));visual.append(building,elm('span','visual-chip',s.levels[0]+' school'));
+    const visual=elm('div','school-visual');
+    const photo=elm('img','school-photo');photo.src=photoUrl(s);
+    photo.alt='Illustrative photo of a school setting, not '+s.name;
+    photo.loading='lazy';photo.decoding='async';
+    photo.addEventListener('error',()=>{photo.hidden=true;visual.classList.add('photo-unavailable')});
+    visual.append(photo);
     const save=elm('button','card-save'+(state.saved.has(s.id)?' active':''));save.type='button';save.dataset.action='save';save.dataset.id=s.id;save.setAttribute('aria-label',state.saved.has(s.id)?'Remove '+s.name+' from saved schools':'Save '+s.name);save.setAttribute('aria-pressed',String(state.saved.has(s.id)));save.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h14v17l-7-4-7 4V4Z"/></svg>';visual.append(save);
     const body=elm('div','card-content');const heading=elm('div','card-heading'),name=elm('div');name.append(elm('h3',null,s.name),elm('div','card-place',s.location));let [label,cls]=status(s);heading.append(name,elm('span','status '+cls,label));body.append(heading);
     const tags=elm('div','card-tags');tags.append(textTag(s.levels[0]),textTag(s.curriculum[0]),textTag(known(s,'boarding')?(s.boarding?'Boarding':'Day school'):'Type not listed'));body.append(tags,elm('p','card-desc',s.description));
