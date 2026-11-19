@@ -4,6 +4,7 @@ This avoids depending on a local network server in restricted browser sandboxes.
 Requires playwright and a locally installed Chromium executable.
 """
 from pathlib import Path
+import re
 from playwright.sync_api import sync_playwright
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -13,8 +14,8 @@ ASSETS = ROOT / 'assets'
 
 def build_inline():
     html = (WEB / 'demo.html').read_text(encoding='utf-8')
-    html = html.replace('<link rel="stylesheet" href="styles.css?v=2">', '<style>' + (WEB / 'styles.css').read_text(encoding='utf-8') + '</style>')
-    html = html.replace('<script src="app.js?v=2" defer></script>', '<script>' + (WEB / 'app.js').read_text(encoding='utf-8') + '</script>')
+    html = re.sub(r'<link rel="stylesheet" href="styles\.css\?v=\d+">', lambda _: '<style>' + (WEB / 'styles.css').read_text(encoding='utf-8') + '</style>', html)
+    html = re.sub(r'<script src="app\.js\?v=\d+" defer></script>', lambda _: '<script>' + (WEB / 'app.js').read_text(encoding='utf-8') + '</script>', html)
     return html
 
 
