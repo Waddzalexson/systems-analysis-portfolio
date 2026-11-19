@@ -16,6 +16,23 @@ This is an independent concept by Alex Wadaba. All school names, fees and admiss
 6. Ask the school guide about fees, boarding options or deadlines. It uses recorded evidence rather than guessing.
 7. Try a request with no matching schools to see the empty state and recovery options.
 
+## Illustrative photography
+
+The school cards use real photographs from Unsplash. The pictures are **illustrative only**. They do not depict the fictional schools or verify the listed fees, facilities or admission details.
+
+Photo source pages:
+
+- [School exterior](https://unsplash.com/photos/a-school-building-surrounded-by-greenery-under-a-blue-sky-eZjpArlRqZ4)
+- [Campus building](https://unsplash.com/photos/a-colorful-school-building-and-playground-siDUeDNlxoY)
+- [School gardens](https://unsplash.com/photos/a-building-with-a-garden-and-trees-in-front-PkR6tOoKAVU)
+- [Classroom](https://unsplash.com/photos/empty-classroom-with-desks-and-chairs-eDLsRfSnrC0)
+- [Playground](https://unsplash.com/photos/schoolyard-with-running-track-and-buildings-beyond-city-buildings-AUzOmtVVFGs)
+- [Sports facilities](https://unsplash.com/photos/a-basketball-court-in-front-of-a-red-building-RZ4LtWXa9h0)
+- [Classroom interior](https://unsplash.com/photos/empty-classroom-with-desks-and-chairs-by-windows-rkH8YVmjQ4w)
+- [Library](https://unsplash.com/photos/a-library-aisle-with-bookshelves-and-sunlight-through-window-xmeRBPunJR8)
+
+Images are loaded from Unsplash and require an internet connection to display. Review the [Unsplash License](https://unsplash.com/license) before reuse in another product.
+
 ## Two run modes
 
 ### Public demo (GitHub Pages)
