@@ -3,312 +3,91 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#0e4d3e">
-  <meta name="description" content="An independent, fictional school-discovery prototype demonstrating grounded, explainable search.">
-  <title>eSchool AI | School discovery concept</title>
-  <style>
-:root{--ink:#15332d;--muted:#61706b;--green:#115b49;--deep:#0e493c;--mint:#edf7f2;--cream:#faf8f1;--line:#dfe8e3;--white:#fff;--shadow:0 16px 52px rgba(16,53,42,.055)}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);background:#f8faf8;font:15px/1.55 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}button,input,select{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid #69c99b;outline-offset:3px}a{color:inherit;text-decoration:none}.shell{max-width:1220px;margin:0 auto;padding:0 38px}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-.topnote{padding:8px 12px;background:#103e32;color:#e9faf1;font-size:9px;font-weight:750;letter-spacing:.14em;text-align:center}.topnote span{padding:0 8px;color:#9dc9b5}.site-header{background:#fff;border-bottom:1px solid #ebf0ec}.nav-row{display:flex;justify-content:space-between;align-items:center;min-height:81px;gap:18px}.brand{display:flex;align-items:center;gap:12px}.brand-icon{width:44px;height:44px;display:grid;place-items:center;border-radius:14px;color:#fff;background:var(--green)}.brand-icon svg{width:28px;height:28px}.brand-stack{display:flex;flex-direction:column;line-height:1.12}.brand-stack strong{font-size:22px;letter-spacing:-.06em}.brand-stack strong span{color:#27a17c}.brand-stack small{margin-top:4px;color:#7c8b84;font-size:10.5px;font-weight:620;letter-spacing:.04em}.nav-links{display:flex;align-self:stretch;align-items:center;gap:35px}.nav-links a{height:100%;display:flex;align-items:center;color:#78847f;font-size:13px;font-weight:650}.nav-links .selected{color:var(--green);border-bottom:2px solid var(--green)}.header-pill{border:1px solid #dcece4;background:#f3faf6;padding:8px 12px;border-radius:24px;color:#206a51;font-size:11px;font-weight:700;white-space:nowrap}.pulse{display:inline-block;width:6px;height:6px;margin-right:6px;border-radius:50%;background:#45b67d}
-.hero{display:grid;grid-template-columns:minmax(0,1.37fr) minmax(295px,.78fr);gap:42px;align-items:center;padding:64px 0 44px}.eyebrow,.section-kicker{font-size:11px;letter-spacing:.13em;font-weight:800;color:#268467}.eyebrow{display:flex;gap:9px;align-items:center}.sparkle{font-size:19px;color:#f2b869}.hero h1{margin:16px 0 16px;font-weight:790;font-size:clamp(38px,4.3vw,60px);letter-spacing:-.064em;line-height:1.09;max-width:700px}.hero h1 em{font-style:normal;color:#23856c}.hero-copy>p{max-width:630px;color:#586e64;font-size:15px;line-height:1.85}.hero-trust{font-size:11px;color:#4a7967;font-weight:690;margin-top:22px}.tiny-check{display:inline-grid;place-items:center;width:17px;height:17px;border-radius:50%;background:#d8efe2;margin-right:5px;color:#236e51}.dot-sep{padding:0 6px}.hero-note{padding:29px 31px;border-radius:23px;background:linear-gradient(135deg,#104b3d 0%,#0d6d52 100%);color:#fff;box-shadow:0 21px 42px rgba(13,77,60,.13);min-height:285px;position:relative;overflow:hidden}.hero-note:after{content:"";position:absolute;right:-60px;top:-70px;border-radius:50%;border:45px solid rgba(235,255,243,.06);width:200px;height:200px}.note-icon{font-size:29px;color:#b6e0c9}.note-top{margin-top:6px;font-size:9px;font-weight:700;letter-spacing:.17em;color:#a5d7c3}.hero-note h2{font-size:27px;letter-spacing:-.05em;line-height:1.15;margin:12px 0 12px}.hero-note p{max-width:280px;color:#cde6d8;font-size:12px;line-height:1.8}.note-bottom{margin-top:22px;padding-top:17px;border-top:1px solid #ffffff31;color:#b6dec8;letter-spacing:.055em;font-size:11px}.note-bottom span{font-weight:800;color:#fff}.note-bottom b{padding:0 9px;color:#8ab7a8}
-.search-panel{position:relative;background:#fff;border:1px solid #e5ece6;border-radius:22px;box-shadow:var(--shadow);padding:28px 31px 23px}.section-intro h2{font-size:23px;letter-spacing:-.04em;margin:3px 0 18px}.search-form{display:flex;gap:10px;align-items:center;height:61px;border:1px solid #cedfd5;border-radius:12px;padding:6px 7px 6px 16px;background:#fff}.search-icon{display:flex;width:23px;height:23px;flex:none;color:#638176}.search-icon svg{width:23px}.search-form input{min-width:0;flex:1;border:0;outline:0;padding:10px 4px;background:transparent;color:#21453b;font-size:14px}.search-form button{height:46px;padding:0 25px;border:0;border-radius:9px;background:#11654f;color:#fff;font-size:13px;font-weight:750;white-space:nowrap;transition:background .2s}.search-form button:hover{background:#0c4c3b}.search-form button span{padding-left:13px;font-size:18px}.quick-prompts{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-top:16px}.quick-prompts>span{color:#8b9992;font-size:12px;margin-right:3px}.prompt{padding:7px 12px;border:1px solid #e2ebe4;background:#f7faf7;color:#527364;border-radius:18px;font-size:11.5px;font-weight:650}.prompt:hover{border-color:#83b8a0;background:#eef9f1}.filter-bar{display:flex;gap:17px;flex-wrap:wrap;align-items:end;margin-top:22px;padding-top:19px;border-top:1px solid #edf1ed}.filter-field{min-width:170px;flex:1}.filter-field label{display:block;margin-bottom:7px;color:#63786d;font-size:11px;font-weight:720}.filter-field select{width:100%;background:#fbfdfb;border:1px solid #e3eae4;border-radius:9px;padding:10px 12px;color:#27473e;font-size:12px}.clear-btn{border:0;background:none;color:#2b8666;font-size:11px;font-weight:780;padding:12px;white-space:nowrap}
-.results-layout{display:grid;grid-template-columns:minmax(0,1.75fr) minmax(280px,.85fr);align-items:start;gap:24px;padding-top:51px}.results-heading{display:flex;justify-content:space-between;align-items:end;gap:10px;margin-bottom:19px}.results-heading h2{font-size:24px;letter-spacing:-.045em;margin:4px 0 0}.results-heading h2 span{display:inline-block;margin-left:7px;border:1px solid #e0e8e2;background:#fff;border-radius:14px;vertical-align:middle;padding:5px 9px;color:#608071;font-size:10px;letter-spacing:0}.sort-info{font-size:10px;color:#87978c;white-space:nowrap}.sort-info span{color:#5ba78a;font-size:11px;padding-right:4px}.school-results{display:flex;flex-direction:column;gap:14px}.school-card{display:grid;grid-template-columns:168px minmax(0,1fr);gap:19px;border:1px solid #e3eae4;background:#fff;padding:16px;border-radius:17px;box-shadow:0 8px 24px rgba(19,66,47,.035)}.school-visual{border-radius:13px;position:relative;min-height:178px;overflow:hidden;background:linear-gradient(135deg,#e1f4e9,#a8d4bb)}.school-visual.visual-1{background:linear-gradient(145deg,#e4f4e9,#b2d8c0)}.school-visual.visual-2{background:linear-gradient(145deg,#e6ecf6,#b4c9e0)}.school-visual.visual-3{background:linear-gradient(145deg,#f4efe0,#dfd1a7)}.school-visual:before{content:"";position:absolute;bottom:-48px;right:-51px;width:177px;height:177px;border:24px solid rgba(255,255,255,.22);border-radius:50%}.illustration{position:absolute;inset:0;display:flex;justify-content:center;align-items:center}.building{position:relative;width:83px;height:87px;border-radius:5px 5px 0 0;background:#4e8d72;box-shadow:0 18px 0 #376e58;transform:translateY(5px)}.building:before{content:"";position:absolute;top:-25px;left:-8px;right:-8px;height:27px;background:#326952;clip-path:polygon(50% 0,100% 100%,0 100%)}.building:after{content:"";position:absolute;left:32px;bottom:0;width:20px;height:35px;border-radius:10px 10px 0 0;background:#f6f1dd}.windows{position:absolute;top:20px;left:14px;display:grid;grid-template-columns:repeat(3,13px);gap:7px;z-index:1}.windows i{background:#d4efe0;width:13px;height:17px;border-radius:3px}.visual-2 .building{background:#6486ac;box-shadow:0 18px 0 #516c8e}.visual-2 .building:before{background:#435f82}.visual-3 .building{background:#b19862;box-shadow:0 18px 0 #917747}.visual-3 .building:before{background:#917747}.visual-label{position:absolute;bottom:12px;left:12px;background:#ffffffdc;color:#375b4d;border-radius:8px;padding:5px 9px;font-size:9px;font-weight:800;letter-spacing:.05em}.school-top{display:flex;justify-content:space-between;gap:9px;align-items:start}.school-name{font-size:18px;letter-spacing:-.04em;font-weight:790;line-height:1.25;margin:2px 0 5px}.school-loc{font-size:11px;color:#7c8e82}.school-loc:before{content:"⌖";font-size:15px;margin-right:4px}.status{padding:5px 8px;border-radius:8px;font-size:10px;font-weight:740;white-space:nowrap}.status.open{background:#eaf6ef;color:#16845c}.status.closed{background:#fff3e9;color:#a66a25}.status.unknown{background:#f1f3f3;color:#677772}.pill-row{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 11px}.school-pill{border:1px solid #e3ece6;border-radius:6px;padding:3px 7px;color:#62816f;background:#f8fbf8;font-size:10px;font-weight:650}.school-description{font-size:11.5px;color:#75877b;line-height:1.6;margin:0 0 13px}.stats-row{display:flex;justify-content:space-between;gap:12px;border-top:1px solid #edf1ed;padding-top:10px}.stat-label{display:block;color:#86978a;font-size:10px}.stat-value{display:block;color:#254d3c;font-size:13px;font-weight:800;margin-top:1px}.data-detail{margin-top:11px;padding-top:10px;border-top:1px dashed #e2ece6}.data-detail summary{font-size:11px;color:#1d7959;cursor:pointer;font-weight:780}.data-detail ul{padding-left:16px;margin:9px 0 0;color:#61776d;font-size:11px}.data-detail li+li{margin-top:3px}.empty-state{padding:46px 25px;border:1px dashed #cfdcd4;background:white;text-align:center;border-radius:17px}.empty-state .empty-icon{font-size:35px;color:#438c70}.empty-state h3{margin:6px 0 8px;font-size:21px}.empty-state p{font-size:12px;color:#74877b;max-width:330px;margin:0 auto 16px}.empty-state button{border:1px solid #b1d4c1;background:#edf7f1;padding:10px 16px;border-radius:9px;color:#246b51;font-size:12px;font-weight:760}.results-foot{font-size:10px;color:#88978d;line-height:1.55;margin-top:15px}.results-foot span{font-size:13px;margin-right:4px}
-.assistant-panel{position:sticky;top:24px;border:1px solid #dce7df;background:#fff;box-shadow:var(--shadow);border-radius:20px;padding:24px 24px 19px}.assistant-header{display:flex;gap:12px;align-items:center}.assistant-avatar{width:41px;height:41px;background:#ebf8ef;color:#1e9873;border-radius:12px;display:grid;place-items:center;font-size:23px}.assistant-label{font-size:9px;letter-spacing:.12em;color:#2b9771;font-weight:780}.assistant-header h3{margin:3px 0 0;font-size:17px;letter-spacing:-.03em}.assistant-answer{font-size:12px;line-height:1.8;color:#597165;margin:19px 0}.assistant-answer strong{color:#1a5741}.assistant-answer .summary-headline{color:#275a45;font-size:15px;font-weight:750;line-height:1.5;margin-bottom:7px}.assistant-answer .evidence-list{margin:8px 0;padding:0 0 0 18px}.assistant-answer .evidence-list li{margin:4px 0}.assistant-answer .warning{margin-top:11px;padding:11px 12px;border-radius:9px;background:#fff8e9;border:1px solid #f2e4c6;color:#81693b;font-size:11px}.assistant-divider{border-top:1px solid #edf1ed;margin:18px 0}.assistant-rule{display:flex;gap:11px;margin:15px 0}.rule-icon{width:23px;height:23px;display:grid;place-items:center;flex:none;border-radius:50%;background:#e2f6ea;color:#228158;font-size:12px;font-weight:800}.rule-icon.secondary{background:#f3f4e9;color:#818c42}.assistant-rule strong{font-size:11px;font-weight:770}.assistant-rule p{font-size:10.5px;line-height:1.65;color:#7e8f83;margin:3px 0}.prototype-tag{border-top:1px solid #edf1ed;margin-top:19px;padding-top:14px;display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;font-size:9px;font-weight:780;letter-spacing:.05em;color:#8c9e91}.prototype-tag span{background:#f0f3f1;padding:5px 7px;border-radius:6px;color:#638574}
-.how{margin:70px 0 62px;padding:35px;background:#eaf4ee;border-radius:23px;display:grid;grid-template-columns:minmax(180px,.7fr) 1.6fr;gap:36px}.how-intro h2{font-size:26px;letter-spacing:-.05em;line-height:1.2;margin:12px 0;max-width:320px}.how-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;align-items:start}.how-steps article{padding:16px;border-left:1px solid #cfe2d7}.how-steps article>span{display:block;font-weight:850;color:#48a782;margin-bottom:13px;font-size:13px}.how-steps strong{display:block;font-size:12px;line-height:1.4}.how-steps p{font-size:10.5px;color:#698374;line-height:1.65}.footer{border-top:1px solid #e4ece5;padding:22px 0;background:#fff}.footer-inner{display:flex;gap:8px;justify-content:space-between;font-size:11px;color:#809086}.footer strong{color:#1b5946;font-size:13px;margin-right:8px}
-@media(max-width:1000px){.hero{grid-template-columns:1.3fr .8fr;gap:22px}.hero-note{padding:22px;min-height:260px}.results-layout{grid-template-columns:minmax(0,1.4fr) minmax(270px,.9fr)}.school-card{grid-template-columns:120px 1fr;gap:13px}.school-visual{min-height:160px}.how{grid-template-columns:1fr}}
-@media(max-width:760px){.shell{padding:0 20px}.topnote{font-size:7.5px;letter-spacing:.05em}.nav-row{min-height:70px}.nav-links{display:none}.header-pill{font-size:10px}.brand-icon{width:40px;height:40px}.hero{grid-template-columns:1fr;padding:38px 0 28px;gap:23px}.hero h1{font-size:43px}.hero-note{min-height:0}.hero-note h2{font-size:23px}.search-panel{padding:20px 17px}.search-form{height:auto;flex-wrap:wrap;padding:10px 12px}.search-form input{flex:1;width:calc(100% - 35px);font-size:13px}.search-form button{width:100%;margin-top:5px}.filter-bar{gap:10px}.filter-field{min-width:calc(50% - 8px)}.results-layout{grid-template-columns:1fr;gap:23px;padding-top:35px}.assistant-panel{position:static}.sort-info{display:none}.how{margin:36px 0;padding:24px}.how-steps{grid-template-columns:1fr}.how-steps article{padding:10px 13px}.footer-inner{flex-direction:column}}
-@media(max-width:480px){.shell{padding:0 15px}.brand-stack strong{font-size:19px}.brand-stack small{font-size:9px}.header-pill{padding:7px 8px;font-size:9px}.hero h1{font-size:38px}.hero-copy>p{font-size:13px}.hero-trust{font-size:10px}.hero-note{padding:23px}.filter-field{min-width:100%}.clear-btn{padding-left:0}.school-card{grid-template-columns:1fr;gap:12px;padding:12px}.school-visual{min-height:140px}.building{transform:translateY(20px) scale(.83)}.school-name{font-size:15px}.school-loc{font-size:10px}.stats-row{flex-wrap:wrap}.stat-value{font-size:11px}.school-description{font-size:10.5px}.status{font-size:9px}.school-top{flex-wrap:wrap}.visual-label{font-size:8px;left:5px;bottom:6px}.results-heading h2{font-size:20px}.how{padding:18px}}
-
-</style>
+  <meta name="theme-color" content="#114c42">
+  <meta name="description" content="Explore and compare schools through a thoughtful, explainable school discovery experience.">
+  <title>eSchool Explore | Find a school that fits</title>
+  <link rel="stylesheet" href="styles.css?v=2">
 </head>
 <body>
-  <div class="topnote">INDEPENDENT PORTFOLIO PROTOTYPE <span aria-hidden="true">•</span> FICTIONAL SCHOOL DATA <span aria-hidden="true">•</span> NOT AN OFFICIAL ESCHOOL PRODUCT</div>
-  <header class="site-header">
-    <div class="shell nav-row">
-      <a href="#top" class="brand" aria-label="eSchool AI demo home">
-        <span class="brand-icon" aria-hidden="true">
-          <svg viewBox="0 0 32 32" fill="none"><path d="M4 13 16 6l12 7-12 7L4 13Z" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/><path d="M10 18.5v5c4 3.5 8 3.5 12 0v-5" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"/><path d="M27.5 14v8" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"/></svg>
-        </span>
-        <span class="brand-stack"><strong>eSchool<span>AI</span></strong><small>School discovery concept</small></span>
+  <header class="topbar">
+    <div class="container nav-inner">
+      <a class="brand" href="#home" aria-label="Go to school discovery">
+        <span class="brand-logo" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none"><path d="M5 15 20 7l15 8-15 8L5 15Z" stroke="currentColor" stroke-width="2.8" stroke-linejoin="round"/><path d="M12 21v8c5 4 11 4 16 0v-8" stroke="currentColor" stroke-width="2.7" stroke-linecap="round"/></svg></span>
+        <span class="brand-name">eSchool<span>Explore</span></span>
       </a>
       <nav class="nav-links" aria-label="Main navigation">
-        <a href="#discover" class="selected">Discover schools</a>
-        <a href="#how-it-works">How it works</a>
+        <a href="#discover">Explore schools</a>
+        <a href="#how">How it works</a>
       </nav>
-      <div class="header-pill"><span class="pulse"></span> Interactive demo</div>
+      <div class="nav-actions">
+        <button class="header-action" type="button" id="open-saved" aria-label="View saved schools"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h14v17l-7-4-7 4V4Z"/></svg><span>Saved</span><b id="saved-count">0</b></button>
+        <button class="header-action compare-trigger" type="button" id="open-compare"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4v16M16 4v16M4 8h16M4 16h16"/></svg><span>Compare</span><b id="compare-count">0</b></button>
+      </div>
     </div>
   </header>
 
-  <main id="top" class="shell">
+  <main id="home">
     <section class="hero">
-      <div class="hero-copy">
-        <div class="eyebrow"><span class="sparkle" aria-hidden="true">✦</span> A clearer way to explore schools</div>
-        <h1>Find a school that feels <em>right for your child.</em></h1>
-        <p>Tell us what matters to your family. Explore schools, compare known details and see exactly where information still needs confirmation.</p>
-        <div class="hero-trust"><span class="tiny-check">✓</span> Evidence-based recommendations <span class="dot-sep">•</span> Clear on missing information</div>
-      </div>
-      <aside class="hero-note">
-        <div class="note-icon" aria-hidden="true">✦</div>
-        <div class="note-top">DESIGNED FOR TRUST</div>
-        <h2>Helpful answers.<br>Without the guesswork.</h2>
-        <p>The assistant only uses facts available in its school records. Missing fees or deadlines are flagged, not invented.</p>
-        <div class="note-bottom"><span>01</span> Find <b>·</b> <span>02</span> Compare <b>·</b> <span>03</span> Confirm</div>
-      </aside>
-    </section>
-
-    <section class="search-panel" id="discover" aria-labelledby="search-title">
-      <div class="section-intro"><span class="section-kicker">SCHOOL DISCOVERY ASSISTANT</span><h2 id="search-title">What are you looking for?</h2></div>
-      <form id="search-form" class="search-form">
-        <label for="question" class="sr-only">Describe the school you need</label>
-        <span class="search-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><circle cx="10.7" cy="10.7" r="6.7" stroke="currentColor" stroke-width="2"/><path d="m16 16 5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
-        <input id="question" name="question" type="search" autocomplete="off" value="Primary school in Kampala under UGX 4 million" placeholder="e.g. Cambridge boarding school in Wakiso" maxlength="240">
-        <button type="submit" id="search-btn">Find schools <span aria-hidden="true">→</span></button>
-      </form>
-      <div class="quick-prompts" aria-label="Try an example search">
-        <span>Try asking</span>
-        <button type="button" class="prompt" data-query="Primary school in Kampala under UGX 4 million">Primary under 4m</button>
-        <button type="button" class="prompt" data-query="Cambridge boarding school in Wakiso">Cambridge boarding</button>
-        <button type="button" class="prompt" data-query="Nursery school in Kampala">Nursery in Kampala</button>
-      </div>
-      <div class="filter-bar" role="group" aria-label="School filters">
-        <div class="filter-field"><label for="location">Location</label><select id="location"><option value="">All locations</option><option value="Kampala">Kampala</option><option value="Wakiso">Wakiso</option></select></div>
-        <div class="filter-field"><label for="level">School level</label><select id="level"><option value="">All levels</option><option value="Nursery">Nursery</option><option value="Primary">Primary</option><option value="Secondary">Secondary</option></select></div>
-        <div class="filter-field"><label for="budget">Annual fee budget</label><select id="budget"><option value="">Any budget</option><option value="2000000">Under UGX 2m</option><option value="4000000">Under UGX 4m</option><option value="8000000">Under UGX 8m</option></select></div>
-        <button id="clear" class="clear-btn" type="button">Reset search</button>
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="eyebrow"><span class="eyebrow-circle">✦</span> A simpler school search</div>
+          <h1>Find a school that <em>fits your child.</em></h1>
+          <p>Explore school options, compare what matters and make your next decision with confidence.</p>
+          <a class="hero-anchor" href="#discover">Start exploring <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="art-sun"></div><div class="art-circle"></div><div class="art-roof"></div><div class="art-roof2"></div>
+          <div class="art-main"><span class="art-window"></span><span class="art-window"></span><span class="art-window"></span><span class="art-window"></span><span class="art-door"></span></div>
+          <div class="art-tree tree-a"><i></i></div><div class="art-tree tree-b"><i></i></div>
+          <div class="art-card"><span class="art-check">✓</span><div><strong>Good matches, clearer choices</strong><small>Compare before you decide</small></div></div>
+        </div>
       </div>
     </section>
 
-    <section class="results-layout" aria-live="polite" aria-relevant="text" aria-label="School search results">
-      <div class="results-col">
-        <div class="results-heading"><div><span class="section-kicker">YOUR RESULTS</span><h2 id="results-title">Schools for you <span id="result-count">1 found</span></h2></div><span class="sort-info"><span aria-hidden="true">◆</span> Based on available records</span></div>
-        <div id="school-results" class="school-results"></div>
-        <div class="results-foot"><span aria-hidden="true">ⓘ</span> All schools and details are fictional. This is a portfolio demonstration, not a live admissions service.</div>
+    <section class="discovery container" id="discover" aria-labelledby="discover-heading">
+      <div class="search-card">
+        <div class="search-heading"><div><span class="section-label">SCHOOL DISCOVERY</span><h2 id="discover-heading">What kind of school are you looking for?</h2></div><span class="search-help">Search by place, level, budget or curriculum</span></div>
+        <form id="search-form" class="search-bar" role="search">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.8"/><path d="m16 16 5 5"/></svg>
+          <label class="sr-only" for="question">Describe your ideal school</label>
+          <input id="question" type="search" name="question" maxlength="260" autocomplete="off" placeholder="Try: Primary school in Kampala under UGX 4 million">
+          <button class="primary-button" type="submit">Find schools <span aria-hidden="true">→</span></button>
+        </form>
+        <div class="examples"><span>Try</span><button type="button" data-query="Primary school in Kampala under UGX 4 million" class="example-pill">Primary under 4m</button><button type="button" data-query="Cambridge boarding school in Wakiso" class="example-pill">Cambridge boarding</button><button type="button" data-query="Nursery school in Kampala" class="example-pill">Nursery in Kampala</button></div>
       </div>
-      <aside class="assistant-panel" aria-labelledby="assistant-title">
-        <div class="assistant-header"><span class="assistant-avatar" aria-hidden="true">✦</span><div><div class="assistant-label">SEARCH ASSISTANT</div><h3 id="assistant-title">Your search, explained</h3></div></div>
-        <div id="assistant-answer" class="assistant-answer"></div>
-        <div class="assistant-divider"></div>
-        <div class="assistant-rule"><span class="rule-icon">✓</span><div><strong>Only available evidence</strong><p>Fees, deadlines and admissions details are shown only where recorded and verified.</p></div></div>
-        <div class="assistant-rule"><span class="rule-icon secondary">?</span><div><strong>Missing data stays missing</strong><p>The demo will ask you to confirm unavailable information rather than guessing.</p></div></div>
-        <div class="prototype-tag">RULE-BASED + RETRIEVAL PROTOTYPE <span>NO LIVE LLM API</span></div>
-      </aside>
+      <div class="workspace">
+        <aside class="filters" aria-labelledby="filter-heading">
+          <div class="filters-head"><h2 id="filter-heading">Refine your search</h2><button type="button" id="clear-filters">Clear all</button></div>
+          <label class="field">Location <select id="filter-location"><option value="">Anywhere</option><option>Kampala</option><option>Wakiso</option><option>Entebbe</option><option>Jinja</option></select></label>
+          <label class="field">School level <select id="filter-level"><option value="">Any level</option><option>Nursery</option><option>Primary</option><option>Secondary</option></select></label>
+          <label class="field">Curriculum <select id="filter-curriculum"><option value="">Any curriculum</option><option value="Uganda National Curriculum">Uganda National</option><option>Cambridge</option><option>Early Years</option></select></label>
+          <label class="field">Maximum annual fees <select id="filter-budget"><option value="">Any budget</option><option value="2000000">UGX 2 million</option><option value="4000000">UGX 4 million</option><option value="6000000">UGX 6 million</option><option value="8000000">UGX 8 million</option><option value="10000000">UGX 10 million</option></select></label>
+          <label class="field">School type <select id="filter-boarding"><option value="">Day or boarding</option><option value="false">Day</option><option value="true">Boarding</option></select></label>
+          <label class="field">Admissions <select id="filter-admissions"><option value="">Any status</option><option value="true">Open</option><option value="false">Closed</option></select></label>
+          <div class="filter-tip"><span class="tip-icon">i</span><p>Use filters to narrow your choices. Missing fees are not treated as free or affordable.</p></div>
+        </aside>
+        <div class="content-area">
+          <div class="results-header"><div><span class="section-label">YOUR OPTIONS</span><h2 id="results-heading">Explore schools <span id="results-count">8 schools</span></h2></div><label class="sort-label">Sort by <select id="sort-by"><option value="match">Best match</option><option value="low">Fees: low to high</option><option value="high">Fees: high to low</option><option value="name">School name</option></select></label></div>
+          <div id="active-filter-label" class="applied-filters" aria-live="polite"></div>
+          <div id="results" class="results-grid" aria-live="polite" aria-label="Schools matching your search"></div>
+          <div id="empty-state" class="empty-state" hidden><div class="empty-graphic" aria-hidden="true">⌕</div><h3>No schools match those choices</h3><p>Try a different location, budget or school level.</p><button id="reset-empty" type="button">Show all schools</button></div>
+        </div>
+        <aside class="guide-panel" aria-labelledby="guide-heading">
+          <div class="guide-intro"><span class="guide-icon">✦</span><div><span class="section-label">YOUR SCHOOL GUIDE</span><h2 id="guide-heading">Here to help you choose</h2></div></div>
+          <div id="guide-conversation" class="guide-conversation" aria-live="polite"><div class="guide-bubble">Search for a school, then ask me about what you find.</div></div>
+          <div class="guide-queries"><button type="button" class="guide-query" data-guide="Which schools have boarding?">Which offer boarding?</button><button type="button" class="guide-query" data-guide="Which schools cost under UGX 4 million?">Under UGX 4 million?</button><button type="button" class="guide-query" data-guide="Do all schools have deadlines?">Are deadlines available?</button></div>
+          <form id="guide-form" class="guide-form"><label for="guide-question" class="sr-only">Ask a question about the schools</label><input id="guide-question" maxlength="200" autocomplete="off" placeholder="Ask about schools..."><button type="submit" aria-label="Ask the school guide"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12 20 4l-5 16-3-7-8-1Z"/></svg></button></form>
+        </aside>
+      </div>
     </section>
 
-    <section class="how" id="how-it-works">
-      <div class="how-intro"><span class="section-kicker">BEHIND THE EXPERIENCE</span><h2>Built to give useful answers, not just convincing ones.</h2></div>
-      <div class="how-steps">
-        <article><span>01</span><strong>Understand the request</strong><p>Extracts school level, location, curriculum and budget from supported phrases.</p></article>
-        <article><span>02</span><strong>Apply real filters</strong><p>Hard requirements are checked against structured school records.</p></article>
-        <article><span>03</span><strong>Explain the results</strong><p>Shows the facts used, plus anything a parent still needs to verify.</p></article>
-      </div>
-    </section>
+    <section class="how-section" id="how"><div class="container how-grid"><div><span class="section-label">A LITTLE MORE CONFIDENCE</span><h2>From searching to shortlisting in three steps.</h2></div><div class="how-items"><article><span class="step-number">01</span><h3>Find schools</h3><p>Start with your location, preferred level, curriculum and budget.</p></article><article><span class="step-number">02</span><h3>Compare options</h3><p>Save favourites and review fees, boarding and deadlines side by side.</p></article><article><span class="step-number">03</span><h3>Plan your next step</h3><p>Review what is known and prepare for an application.</p></article></div></div></section>
   </main>
-  <footer class="footer"><div class="shell footer-inner"><div><strong>eSchool AI</strong> <span>Independent concept demo by Alex Wadaba</span></div><span>No real school, parent or student records used.</span></div></footer>
+  <footer class="footer"><div class="container footer-row"><span><strong>eSchool Explore</strong> · Concept by Alex Wadaba</span><span>Independent portfolio demo using fictional school information. No live admissions or applications.</span></div></footer>
 
-  <script id="school-records" type="application/json">[{"id": "sch-001", "name": "Lakeview Academy", "location": "Kampala", "curriculum": ["Uganda National Curriculum"], "levels": ["Primary", "Secondary"], "boarding": false, "annual_fee_ugx": 3200000, "admissions_open": true, "application_deadline": "2027-01-15", "description": "Day school with a strong science programme, computer studies and structured parent reporting.", "verified_fields": ["location", "curriculum", "levels", "boarding", "annual_fee_ugx", "admissions_open", "application_deadline"]}, {"id": "sch-002", "name": "Greenhill International School", "location": "Wakiso", "curriculum": ["Cambridge"], "levels": ["Primary", "Secondary"], "boarding": true, "annual_fee_ugx": 7800000, "admissions_open": true, "application_deadline": null, "description": "Boarding and day options with Cambridge curriculum, sports facilities and digital learning resources.", "verified_fields": ["location", "curriculum", "levels", "boarding", "annual_fee_ugx", "admissions_open"]}, {"id": "sch-003", "name": "Nile Early Learning Centre", "location": "Kampala", "curriculum": ["Early Years"], "levels": ["Nursery"], "boarding": false, "annual_fee_ugx": null, "admissions_open": false, "application_deadline": null, "description": "Nursery-focused school offering play-based early learning and parent progress updates.", "verified_fields": ["location", "curriculum", "levels", "boarding", "admissions_open"]}]</script>
-  <script>
-(function () {
-  'use strict';
-
-  const records = JSON.parse(document.getElementById('school-records').textContent);
-  const searchInput = document.getElementById('question');
-  const resultHost = document.getElementById('school-results');
-  const summaryHost = document.getElementById('assistant-answer');
-  const countHost = document.getElementById('result-count');
-  const locationSelect = document.getElementById('location');
-  const levelSelect = document.getElementById('level');
-  const budgetSelect = document.getElementById('budget');
-  const stopWords = new Set(['a', 'an', 'and', 'i', 'my', 'me', 'need', 'want', 'looking', 'for', 'find', 'school', 'schools', 'in', 'the', 'that', 'with', 'under', 'below', 'near', 'which', 'is', 'are', 'how', 'much', 'fees', 'fee', 'ugx', 'admission', 'admissions', 'open']);
-  const fee = n => new Intl.NumberFormat('en-UG').format(n);
-  const known = (school, field) => (school.verified_fields || []).includes(field) && school[field] !== null && school[field] !== undefined;
-  const el = (tag, className, content) => {
-    const e = document.createElement(tag);
-    if (className) e.className = className;
-    if (content !== undefined) e.textContent = String(content);
-    return e;
-  };
-
-  function parseBudget(q) {
-    const words = { one:1, two:2, three:3, four:4, five:5, six:6, seven:7, eight:8, nine:9, ten:10 };
-    const pattern = /(?:under|below|less than|up to|maximum|max|budget(?: is| of)?|not more than)\s*(?:ugx|shs|shillings)?\s*([\d,.]+|one|two|three|four|five|six|seven|eight|nine|ten)\s*(million|m|thousand|k)?/i;
-    const m = q.match(pattern);
-    if (!m) return null;
-    const n = words[m[1].toLowerCase()] || Number(m[1].replace(/,/g, ''));
-    if (!Number.isFinite(n) || n <= 0) return null;
-    const multiplier = (m[2] || '').toLowerCase();
-    if (multiplier === 'million' || multiplier === 'm') return n * 1_000_000;
-    if (multiplier === 'thousand' || multiplier === 'k') return n * 1000;
-    return n;
-  }
-
-  function inferQuery(q) {
-    q = (q || '').toLowerCase();
-    const values = {};
-    if (/\bkampala\b/.test(q)) values.location = 'Kampala';
-    if (/\bwakiso\b/.test(q)) values.location = 'Wakiso';
-    if (/\bnursery\b/.test(q)) values.level = 'Nursery';
-    else if (/\bprimary\b/.test(q)) values.level = 'Primary';
-    else if (/\bsecondary\b/.test(q)) values.level = 'Secondary';
-    if (/\bcambridge\b/.test(q)) values.curriculum = 'Cambridge';
-    if (/\b(no boarding|non.?boarding|day school|day schools)\b/.test(q)) values.boarding = false;
-    else if (/\bboarding\b/.test(q)) values.boarding = true;
-    const maxBudget = parseBudget(q);
-    if (maxBudget !== null) values.max_annual_fee_ugx = maxBudget;
-    if (/\b(admissions open|open for admission|currently admitting)\b/.test(q)) values.admissions_open = true;
-    return values;
-  }
-
-  function tokens(q) {
-    return q.toLowerCase().replace(/[,.]/g, ' ').split(/[^a-z0-9]+/).filter(s => s.length > 2 && !stopWords.has(s) && !/^\d+$/.test(s));
-  }
-
-  function passes(school, filters) {
-    for (const field of ['location','level','curriculum','boarding','admissions_open']) {
-      if (filters[field] === undefined) continue;
-      const sourceField = field === 'level' ? 'levels' : field;
-      if (!known(school, sourceField)) return false;
-      const actual = school[sourceField];
-      if (Array.isArray(actual)) {
-        if (!actual.some(x => String(x).toLowerCase() === String(filters[field]).toLowerCase())) return false;
-      } else if (typeof actual === 'string') {
-        if (actual.toLowerCase() !== String(filters[field]).toLowerCase()) return false;
-      } else if (actual !== filters[field]) return false;
-    }
-    if (filters.max_annual_fee_ugx !== undefined) {
-      if (!known(school, 'annual_fee_ugx') || school.annual_fee_ugx > filters.max_annual_fee_ugx) return false;
-    }
-    return true;
-  }
-
-  function getResults() {
-    const q = searchInput.value.trim();
-    const parsed = inferQuery(q);
-    if (locationSelect.value) parsed.location = locationSelect.value;
-    if (levelSelect.value) parsed.level = levelSelect.value;
-    if (budgetSelect.value) parsed.max_annual_fee_ugx = Number(budgetSelect.value);
-    const queryTokens = tokens(q);
-    const hasFilters = Object.keys(parsed).length > 0;
-    return records
-      .filter(school => passes(school, parsed))
-      .map(school => {
-        const hay = [school.name, school.location, ...(school.curriculum || []), ...(school.levels || []), school.description].join(' ').toLowerCase();
-        const score = queryTokens.reduce((total, word) => total + (hay.includes(word) ? 1 : 0), 0);
-        return {school, score};
-      })
-      .filter(x => !q || hasFilters || !queryTokens.length || x.score > 0)
-      .sort((a, b) => b.score - a.score || a.school.id.localeCompare(b.school.id));
-  }
-
-  function makeVisual(school, number) {
-    const visual = el('div', 'school-visual visual-' + number);
-    const art = el('div', 'illustration');
-    const building = el('div', 'building');
-    const windows = el('span', 'windows');
-    for (let i=0;i<6;i++) windows.append(el('i'));
-    building.append(windows); art.append(building); visual.append(art);
-    visual.append(el('div','visual-label', school.levels[0] + ' SCHOOL'));
-    return visual;
-  }
-
-  function stat(label, value) {
-    const root = el('div');
-    root.append(el('span','stat-label',label),el('strong','stat-value',value));
-    return root;
-  }
-
-  function createCard(school, index) {
-    const card = el('article', 'school-card');
-    card.append(makeVisual(school, index % 3 + 1));
-    const body = el('div', 'school-body');
-    const top = el('div', 'school-top');
-    const nameBlock = el('div');
-    nameBlock.append(el('h3','school-name',school.name), el('div','school-loc', known(school,'location') ? school.location + ', Uganda' : 'Location not confirmed'));
-    let statusText = 'Status not confirmed', statusClass = 'unknown';
-    if (known(school, 'admissions_open')) { statusText = school.admissions_open ? 'Admissions open*' : 'Admissions closed*'; statusClass = school.admissions_open ? 'open' : 'closed'; }
-    top.append(nameBlock,el('span','status ' + statusClass,statusText));
-    body.append(top);
-    const pills=el('div','pill-row');
-    for (const item of [...(school.levels||[]).slice(0,2), ...(school.curriculum||[]).slice(0,1)]) pills.append(el('span','school-pill',item));
-    if (known(school,'boarding')) pills.append(el('span','school-pill',school.boarding ? 'Boarding' : 'Day school'));
-    body.append(pills);
-    body.append(el('p','school-description',school.description));
-    const stats = el('div','stats-row');
-    stats.append(stat('Listed annual fee',known(school,'annual_fee_ugx') ? 'UGX ' + fee(school.annual_fee_ugx) : 'Not provided'));
-    stats.append(stat('Application deadline',known(school,'application_deadline') ? school.application_deadline : 'Not listed'));
-    body.append(stats);
-    const details = el('details','data-detail');
-    const summary = el('summary',null,'View evidence and limitations');
-    details.append(summary);
-    const evidence=el('ul');
-    const labels={location:'Location',curriculum:'Curriculum',levels:'Levels',boarding:'Boarding',annual_fee_ugx:'Annual fee',admissions_open:'Admissions status',application_deadline:'Deadline'};
-    for (const [field,label] of Object.entries(labels)) {
-      let value = 'Not available or not verified';
-      if (known(school,field)) {
-        value = Array.isArray(school[field]) ? school[field].join(', ') : field === 'annual_fee_ugx' ? 'UGX ' + fee(school[field]) : field === 'boarding' ? (school[field] ? 'Yes':'No') : field === 'admissions_open' ? (school[field] ? 'Open*' : 'Closed*') : String(school[field]);
-      }
-      evidence.append(el('li',null,label + ': ' + value));
-    }
-    details.append(evidence); body.append(details); card.append(body);
-    return card;
-  }
-
-  function appendSummary(results) {
-    summaryHost.replaceChildren();
-    if (!results.length) {
-      summaryHost.append(el('div','summary-headline','No matching schools in the sample data.'));
-      summaryHost.append(el('p',null,'I cannot recommend a school that does not meet the available verified criteria. Try a different location, level or fee range.'));
-      return;
-    }
-    const first = results[0].school;
-    const more = results.length > 1;
-    summaryHost.append(el('div','summary-headline', more ? `${results.length} schools match your search.` : `${first.name} matches your search.`));
-    const intro = more ? 'Here are the matches supported by the available sample records.' : 'Here is what the available sample record confirms:';
-    summaryHost.append(el('p',null,intro));
-    const list=el('ul','evidence-list');
-    if (known(first,'location')) list.append(el('li',null,`Location: ${first.location}`));
-    if (known(first,'levels')) list.append(el('li',null,`Level: ${first.levels.join(', ')}`));
-    if (known(first,'annual_fee_ugx')) list.append(el('li',null,`Annual fee: UGX ${fee(first.annual_fee_ugx)}`));
-    if (known(first,'admissions_open')) list.append(el('li',null,`Recorded admissions status: ${first.admissions_open ? 'open':'closed'}*`));
-    summaryHost.append(list);
-    const missing = [];
-    if (!known(first,'application_deadline')) missing.push('application deadline');
-    if (!known(first,'annual_fee_ugx')) missing.push('annual fee');
-    if (missing.length) {
-      summaryHost.append(el('div','warning','Needs confirmation: ' + missing.join(' and ') + '. Please check directly with the school before applying.'));
-    } else {
-      summaryHost.append(el('div','warning','*Admissions information is fictional demo data, not a live availability check. Always confirm before applying.'));
-    }
-  }
-
-  function render() {
-    const results=getResults();
-    countHost.textContent = results.length + (results.length === 1 ? ' found' : ' found');
-    resultHost.replaceChildren();
-    if (!results.length) {
-      const empty = el('div','empty-state');
-      empty.append(el('div','empty-icon','⌕'),el('h3',null,'No exact matches found'),el('p',null,'No school in this fictional dataset meets the current criteria. Try widening your budget or clearing a filter.'));
-      const reset=el('button',null,'Show all demo schools');
-      reset.addEventListener('click',resetAll);
-      empty.append(reset); resultHost.append(empty);
-    } else {
-      for (let i=0;i<results.length;i++) resultHost.append(createCard(results[i].school,i));
-    }
-    appendSummary(results);
-  }
-
-  function resetAll() {
-    searchInput.value='';
-    locationSelect.value='';levelSelect.value='';budgetSelect.value='';
-    render();
-  }
-
-  document.getElementById('search-form').addEventListener('submit',function(event){event.preventDefault();render();});
-  document.querySelectorAll('.prompt').forEach(btn=>btn.addEventListener('click',()=>{locationSelect.value='';levelSelect.value='';budgetSelect.value='';searchInput.value=btn.dataset.query;render();}));
-  [locationSelect,levelSelect,budgetSelect].forEach(select=>select.addEventListener('change',render));
-  document.getElementById('clear').addEventListener('click',resetAll);
-  render();
-})();
-
-</script>
+  <div id="overlay" class="overlay" hidden><section class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"><div class="modal-header"><h2 id="modal-title">Details</h2><button id="close-modal" type="button" aria-label="Close dialog">×</button></div><div id="modal-content" class="modal-body"></div></section></div>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+  <script id="school-records" type="application/json">[{"id":"sch-001","name":"Acacia Springs Academy","location":"Kampala","curriculum":["Uganda National Curriculum"],"levels":["Primary","Secondary"],"boarding":false,"annual_fee_ugx":3200000,"admissions_open":true,"application_deadline":"2027-01-15","description":"A day school with science clubs, active learning and regular parent updates.","highlights":["Science clubs","Parent updates"],"verified_fields":["location","curriculum","levels","boarding","annual_fee_ugx","admissions_open","application_deadline"]},{"id":"sch-002","name":"Hillside Grove International","location":"Wakiso","curriculum":["Cambridge"],"levels":["Primary","Secondary"],"boarding":true,"annual_fee_ugx":7800000,"admissions_open":true,"application_deadline":null,"description":"Cambridge curriculum with boarding facilities, performing arts and sports.","highlights":["Boarding","Performing arts"],"verified_fields":["location","curriculum","levels","boarding","annual_fee_ugx","admissions_open"]},{"id":"sch-003","name":"Little River Learning House","location":"Kampala","curriculum":["Early Years"],"levels":["Nursery"],"boarding":false,"annual_fee_ugx":null,"admissions_open":false,"application_deadline":null,"description":"Early years learning focused on play, language and family communication.","highlights":["Early years","Play-based"],"verified_fields":["location","curriculum","levels","boarding","admissions_open"]},{"id":"sch-004","name":"Juniper Hills School","location":"Entebbe","curriculum":["Uganda National Curriculum"],"levels":["Primary"],"boarding":false,"annual_fee_ugx":2600000,"admissions_open":true,"application_deadline":"2027-02-01","description":"A welcoming primary school with literacy programmes and small-group support.","highlights":["Literacy","Small-group support"],"verified_fields":["location","curriculum","levels","boarding","annual_fee_ugx","admissions_open","application_deadline"]},{"id":"sch-005","name":"Mivule International Academy","location":"Kampala","curriculum":["Cambridge"],"levels":["Secondary"],"boarding":true,"annual_fee_ugx":9200000,"admissions_open":false,"application_deadline":null,"description":"Secondary studies with laboratory facilities, clubs and residential options.","highlights":["Laboratory","Residential"],"verified_fields":["location","curriculum","levels","boarding","annual_fee_ugx","admissions_open"]},{"id":"sch-006","name":"Tendo Valley Primary","location":"Kampala","curriculum":["Uganda National Curriculum"],"levels":["Primary"],"boarding":false,"annual_fee_ugx":1800000,"admissions_open":true,"application_deadline":null,"description":"An accessible primary option with reading clubs and activity-based lessons.","highlights":["Reading clubs","Affordable fees"],"verified_fields":["location","curriculum","levels","boarding","annual_fee_ugx","admissions_open"]},{"id":"sch-007","name":"Cedarbrook Scholars School","location":"Wakiso","curriculum":["Uganda National Curriculum"],"levels":["Primary"],"boarding":false,"annual_fee_ugx":3900000,"admissions_open":true,"application_deadline":"2026-12-18","description":"Primary education with structured assessment and co-curricular clubs.","highlights":["Co-curricular","Assessment updates"],"verified_fields":["location","curriculum","levels","boarding","annual_fee_ugx","admissions_open","application_deadline"]},{"id":"sch-008","name":"Sapphire Horizon School","location":"Jinja","curriculum":["Uganda National Curriculum"],"levels":["Secondary"],"boarding":true,"annual_fee_ugx":4800000,"admissions_open":true,"application_deadline":"2027-01-29","description":"A boarding secondary school offering practical sciences and team sports.","highlights":["Practical sciences","Team sports"],"verified_fields":["location","curriculum","levels","boarding","annual_fee_ugx","admissions_open","application_deadline"]}]</script>
+  <script src="app.js?v=2" defer></script>
 </body>
 </html>
