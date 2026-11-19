@@ -1,58 +1,70 @@
-# Architecture and Engineering Decisions
+# Architecture and engineering decisions
 
-## Goal
+## Objective
 
-Provide parents with useful school-discovery and admissions answers without allowing the AI layer to invent fees, deadlines, availability or school facts that are not present in trusted data.
+Show a practical parent-facing school-search feature that is both useful and defensible in a technical review. The goal is not to build a generic chatbot. It is to support a clear school selection workflow without inventing sensitive facts.
 
-## Proposed flow
+## Public architecture
 
-1. Parent asks a natural-language question.
-2. Request parser extracts structured constraints where possible, such as location, level, curriculum, boarding preference and fee ceiling.
-3. Structured filters remove schools that clearly do not meet hard requirements.
-4. Text retrieval ranks the remaining schools for relevance.
-5. A grounding bundle is constructed from verified fields only.
-6. An LLM can turn the evidence bundle into a natural response.
-7. The response layer must state missing information instead of guessing.
-8. High-impact details such as application deadlines can require confirmation from a school administrator or verified school feed.
+```
+GitHub Pages
+   |
+   v
+Responsive HTML/CSS/JavaScript
+   |
+   +--> Natural-language-inspired parsing
+   +--> Structured filters and keyword ranking
+   +--> Verified school records embedded in the page
+   +--> Saved schools and comparison (local IDs only)
+   +--> Evidence-based school guide
+   +--> Local-only application checklist preview
+```
 
-## Why retrieval before generation
+The static site remains fully interactive without any server or third-party API. This is deliberate so the demo is available to recruiters without keys, credentials or a paid service.
 
-A parent asking about a school is usually asking for factual information that already exists in platform data. The AI should therefore retrieve and explain the data rather than generate facts from memory.
+## Optional backend architecture
 
-## Data model principles
+```
+Local browser
+   |
+   v
+Python HTTP server (same origin)
+   |
+   +--> /api/search: verified filters + ranking + evidence bundle
+   +--> /api/ask: deterministic answer
+   +--> optional LLM Responses API adapter
+           |
+           +--> only verified fictional fields
+           +--> check source IDs and monetary claims
+           +--> fall back to deterministic answer on failure
+```
 
-- verified fields are explicitly tracked
-- missing values remain missing rather than being converted to defaults
-- fees are numeric and currency-specific
-- admissions status is separate from application deadline
-- school descriptions are searchable, but should not override structured fields
+When the interface is served locally by `backend/server.py`, it marks API mode and the browser calls the Python endpoints. GitHub Pages cannot host the Python backend, so the published demo uses the embedded-data fallback.
 
-## Failure modes considered
+## Why these choices
 
-### Missing fees
-Do not treat a missing fee as zero or as affordable. The school should be excluded from a hard fee-ceiling filter or clearly marked as needing confirmation.
+- **Deterministic controls:** School fees, budgets, admissions status and user permissions should not be invented by a language model.
+- **Grounding:** Only fields marked verified can be sent as supporting evidence.
+- **Explicit missingness:** A missing deadline or fee is never replaced with a guess or zero.
+- **Cost awareness:** Structured filtering runs before a model request. The public demo needs no model calls.
+- **Resilience:** If a configured LLM endpoint fails, the Python API can produce an ordinary grounded answer.
+- **Privacy:** The public demo has no student identities or live school applications. Saved lists use school IDs only.
 
-### Missing deadlines
-Do not invent a deadline. State that the deadline is not available in the current data and provide a next action.
+## Current limitations
 
-### Conflicting school information
-Prefer the most recently verified structured field and flag conflicting records for administrative review.
+- The data is fictional and small; ranking quality is not a benchmark for a production catalogue.
+- The sample school guide recognizes specific school-related questions. It is not general-purpose conversational AI.
+- The live public site runs client-side search; the Python backend and optional model adapter are demonstrated separately.
+- There is no real authentication, live application submission, fee processing or school-admin dashboard.
+- The optional LLM adapter requires valid configuration and should be evaluated more thoroughly before production use.
+- The backend is a local reference service, not a hardened internet-facing API.
 
-### No matching school
-Return no match and suggest relaxing specific filters instead of fabricating a recommendation.
+## Production next steps
 
-### Prompt injection in school descriptions
-Treat school-provided descriptions as data, not instructions to the model. Only trusted system rules should control the answer behaviour.
-
-### Cost control
-Use deterministic filtering and retrieval before calling an LLM. Do not spend model tokens on schools that already fail the user's hard constraints.
-
-## Production extensions
-
-- PostgreSQL-backed school catalogue
-- embeddings or hybrid lexical/vector retrieval
-- row-level access and tenant isolation for school-admin data
-- tool calling for application status and admissions workflows
-- audit logs for AI answers and evidence used
-- offline evaluation set covering common parent questions and known edge cases
-- monitoring for unanswered questions, latency, cost and unsupported-answer rate
+1. Use a maintained school database, freshness timestamps and a school verification workflow.
+2. Add a secure application backend with session management, tenant permissions and API authentication.
+3. Keep the model key on the server and enforce budgets, timeouts, usage limits and provider error handling.
+4. Evaluate query understanding and retrieval with real user questions and known-correct answers.
+5. Monitor unsupported claims and compare generated answers against authoritative records.
+6. Add consent, retention and access policies before handling parent or pupil data.
+7. Add actual school application integrations and status tracking only after service agreements and permissions are in place.
