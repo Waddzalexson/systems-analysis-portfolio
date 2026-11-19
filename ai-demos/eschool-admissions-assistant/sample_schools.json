@@ -1,0 +1,41 @@
+[
+  {
+    "id": "sch-001",
+    "name": "Lakeview Academy",
+    "location": "Kampala",
+    "curriculum": ["Uganda National Curriculum"],
+    "levels": ["Primary", "Secondary"],
+    "boarding": false,
+    "annual_fee_ugx": 3200000,
+    "admissions_open": true,
+    "application_deadline": "2027-01-15",
+    "description": "Day school with a strong science programme, computer studies and structured parent reporting.",
+    "verified_fields": ["location", "curriculum", "levels", "boarding", "annual_fee_ugx", "admissions_open", "application_deadline"]
+  },
+  {
+    "id": "sch-002",
+    "name": "Greenhill International School",
+    "location": "Wakiso",
+    "curriculum": ["Cambridge"],
+    "levels": ["Primary", "Secondary"],
+    "boarding": true,
+    "annual_fee_ugx": 7800000,
+    "admissions_open": true,
+    "application_deadline": null,
+    "description": "Boarding and day options with Cambridge curriculum, sports facilities and digital learning resources.",
+    "verified_fields": ["location", "curriculum", "levels", "boarding", "annual_fee_ugx", "admissions_open"]
+  },
+  {
+    "id": "sch-003",
+    "name": "Nile Early Learning Centre",
+    "location": "Kampala",
+    "curriculum": ["Early Years"],
+    "levels": ["Nursery"],
+    "boarding": false,
+    "annual_fee_ugx": null,
+    "admissions_open": false,
+    "application_deadline": null,
+    "description": "Nursery-focused school offering play-based early learning and parent progress updates.",
+    "verified_fields": ["location", "curriculum", "levels", "boarding", "admissions_open"]
+  }
+]
