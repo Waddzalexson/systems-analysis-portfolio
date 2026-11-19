@@ -36,34 +36,26 @@ def _text_for_school(school: dict[str, Any]) -> str:
 def _passes_filters(school: dict[str, Any], filters: dict[str, Any] | None) -> bool:
     if not filters:
         return True
-
-    if filters.get("location") and school.get("location", "").lower() != str(filters["location"]).lower():
-        return False
-
-    if filters.get("boarding") is not None and school.get("boarding") is not filters["boarding"]:
-        return False
-
-    if filters.get("admissions_open") is not None and school.get("admissions_open") is not filters["admissions_open"]:
-        return False
-
-    max_fee = filters.get("max_annual_fee_ugx")
-    if max_fee is not None:
-        fee = school.get("annual_fee_ugx")
-        if fee is None or fee > max_fee:
+    verified = set(school.get("verified_fields") or [])
+    mapping = {"level": "levels", "max_annual_fee_ugx": "annual_fee_ugx"}
+    for key, wanted in filters.items():
+        if wanted is None or wanted == "":
+            continue
+        field = mapping.get(key, key)
+        if field not in verified or school.get(field) is None:
             return False
-
-    curriculum = filters.get("curriculum")
-    if curriculum:
-        curricula = [x.lower() for x in school.get("curriculum") or []]
-        if str(curriculum).lower() not in curricula:
+        actual = school[field]
+        if key == "max_annual_fee_ugx":
+            if not isinstance(actual, (int, float)) or actual > wanted:
+                return False
+        elif isinstance(actual, list):
+            if not any(str(item).lower() == str(wanted).lower() for item in actual):
+                return False
+        elif isinstance(actual, str):
+            if actual.lower() != str(wanted).lower():
+                return False
+        elif actual != wanted:
             return False
-
-    level = filters.get("level")
-    if level:
-        levels = [x.lower() for x in school.get("levels") or []]
-        if str(level).lower() not in levels:
-            return False
-
     return True
 
 
@@ -83,9 +75,9 @@ def _evidence_and_missing(school: dict[str, Any]) -> tuple[list[str], list[str]]
     verified = set(school.get("verified_fields") or [])
     for field in fields:
         value = school.get(field)
-        if value is None or value == "" or value == []:
+        if field not in verified or value is None or value == "" or value == []:
             missing.append(field)
-        elif field in verified:
+        else:
             evidence.append(f"{field}={value}")
 
     return evidence, missing
