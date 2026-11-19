@@ -16,15 +16,15 @@ A fictional procurement-process case study including:
 
 ### 2. School admissions AI concept
 
-A fictional school-search and parent-support prototype demonstrating evidence-grounded recommendations, structured search, missing-data handling and edge-case testing.
+A presentation-ready school discovery concept with a responsive interface, natural-language-inspired search, saved school lists, side-by-side comparisons, school details, an application checklist preview and a grounded school guide.
 
-- **[Explore the visual, interactive demonstration](ai-demos/eschool-admissions-assistant/web/demo.html)**
-- [Read the AI demo documentation](ai-demos/eschool-admissions-assistant/README.md)
-- [Inspect the Python retrieval code](ai-demos/eschool-admissions-assistant/retriever.py)
-- [Review architecture and reliability considerations](ai-demos/eschool-admissions-assistant/architecture.md)
+- **[Open the live interactive demo](https://waddzalexson.github.io/systems-analysis-portfolio/ai-demos/eschool-admissions-assistant/web/demo.html)**
+- [Read the implementation and setup guide](ai-demos/eschool-admissions-assistant/README.md)
+- [Review the Python backend](ai-demos/eschool-admissions-assistant/backend/server.py)
+- [Inspect the retrieval and grounding logic](ai-demos/eschool-admissions-assistant/retriever.py)
+- [See the architecture and reliability decisions](ai-demos/eschool-admissions-assistant/architecture.md)
 
-**Important:** The visual interface is a standalone, deterministic prototype. It does not call a live LLM or connect to actual school admissions services. Download the HTML file to open it locally.
-
+The public demo uses fictional data and deterministic search. The Python backend is optional and has a disabled-by-default LLM adapter. No live school applications are submitted.
 ## Working method
 
 1. Understand the business problem and stakeholders
