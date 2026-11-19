@@ -59,7 +59,7 @@
     photo.alt='Illustrative photo of a school setting, not '+s.name;
     photo.loading='lazy';photo.decoding='async';
     photo.addEventListener('error',()=>{photo.hidden=true;visual.classList.add('photo-unavailable')});
-    visual.append(photo);
+    visual.append(elm('div','school-photo-fallback','Photo unavailable'),photo);
     const save=elm('button','card-save'+(state.saved.has(s.id)?' active':''));save.type='button';save.dataset.action='save';save.dataset.id=s.id;save.setAttribute('aria-label',state.saved.has(s.id)?'Remove '+s.name+' from saved schools':'Save '+s.name);save.setAttribute('aria-pressed',String(state.saved.has(s.id)));save.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h14v17l-7-4-7 4V4Z"/></svg>';visual.append(save);
     const body=elm('div','card-content');const heading=elm('div','card-heading'),name=elm('div');name.append(elm('h3',null,s.name),elm('div','card-place',s.location));let [label,cls]=status(s);heading.append(name,elm('span','status '+cls,label));body.append(heading);
     const tags=elm('div','card-tags');tags.append(textTag(s.levels[0]),textTag(s.curriculum[0]),textTag(known(s,'boarding')?(s.boarding?'Boarding':'Day school'):'Type not listed'));body.append(tags,elm('p','card-desc',s.description));
@@ -144,6 +144,13 @@
   document.querySelectorAll('[data-query]').forEach(b=>b.addEventListener('click',()=>{$('question').value=b.dataset.query;state.view='all';for(const f of ['filter-location','filter-level','filter-curriculum','filter-budget','filter-boarding','filter-admissions'])$(f).value='';render()}));
   for(const id of ['filter-location','filter-level','filter-curriculum','filter-budget','filter-boarding','filter-admissions','sort-by'])$(id).addEventListener('change',()=>{state.view='all';render()});
   $('clear-filters').addEventListener('click',resetAll);$('reset-empty').addEventListener('click',resetAll);$('open-compare').addEventListener('click',showComparison);$('open-saved').addEventListener('click',showSaved);
+  // Keep the page presentable when an external image service is unavailable.
+  const heroPhoto=document.querySelector('.hero-photo-frame img');
+  if(heroPhoto){
+    const onHeroError=()=>{heroPhoto.hidden=true;heroPhoto.parentElement.classList.add('photo-unavailable')};
+    heroPhoto.addEventListener('error',onHeroError);
+    if(heroPhoto.complete && !heroPhoto.naturalWidth)onHeroError();
+  }
   state.saved=new Set([...state.saved].filter(id=>byId[id]));
   render();
 })();
