@@ -1,36 +1,25 @@
-# Evaluation Checklist
+# Evaluation checklist
 
-A production version should be evaluated on more than whether the answer sounds good.
+## Verified in this version
 
-## Retrieval
+- Eight fictional school records load correctly.
+- Structured filtering rejects schools missing a required fee or level.
+- Missing deadlines are marked as unavailable, not inferred.
+- No-match searches produce a helpful reset path.
+- Users can shortlist, compare up to three schools and preview application steps.
+- The school guide handles supported fees and deadline questions.
+- Python search and grounding APIs return valid responses and reject invalid filters.
+- Responsive screenshots and browser interactions have been checked.
 
-- correct school appears in top results
-- hard filters are always respected
-- missing values do not accidentally pass numeric filters
-- no school outside the requested level/location appears when the user states a hard constraint
+## Additional checks before production
 
-## Grounding
-
-- answer claims can be traced to verified fields
-- missing fees or deadlines are stated as unavailable
-- the model does not convert unverified descriptions into structured facts
-
-## Safety and privacy
-
-- no private student or parent data is used in public school discovery
-- school administrators can access only their authorised school records
-- prompt injection contained in school-provided text does not alter system instructions
-
-## Reliability
-
-- empty result sets produce a useful no-match response
-- database or AI-provider failures degrade gracefully
-- timeouts and retries are bounded
-- answers are logged with the evidence identifiers used
-
-## Cost and performance
-
-- retrieval is completed before LLM generation
-- unnecessary model calls are avoided
-- token usage and latency are monitored
-- a simpler deterministic response is used where AI adds no value
+- Accurate retrieval and ranking on a representative school catalogue.
+- Handling of changed admission deadlines and conflicting school records.
+- Robust protection against injection in school descriptions and other external text.
+- AI answer evaluation for unsupported claims and edge cases.
+- Authentication, role-based school access and multi-tenant isolation.
+- Rate limits, API timeouts, incident logging and service monitoring.
+- Consent and data retention for any parent or student information.
+- Keyboard interaction, screen reader coverage and visual accessibility audit.
+- Performance tests for a realistic school dataset.
+- Cost monitoring and agreed model/provider choices.
