@@ -1,54 +1,52 @@
 # AI-Assisted School Admissions and Parent Support Demo
 
-A small public prototype showing how an AI feature for a school-discovery platform can be designed around **grounded data, explicit edge cases and controlled generation** rather than treating an LLM as the source of truth.
+A public portfolio prototype demonstrating school discovery with structured filters, explainable recommendations, missing-data checks and evidence-based answering.
 
-This is a fictional portfolio demonstration. The school records are synthetic and are not real institutions.
+**This is an independent demonstration, not an official eSchool product.** All school records, fees and admissions information are fictional.
 
-## Problem
+## Visual demo
 
-Parents may ask questions such as:
+**[View the interactive web interface](web/demo.html)**
 
-- Which primary schools in Kampala fit my budget?
-- Which schools offer Cambridge curriculum and boarding?
-- Is admission still open?
-- What is the application deadline?
+The demo contains a responsive parent-facing search page with:
+- Example school questions and a natural-language-inspired search field
+- Location, level and fee filters
+- School cards, recorded admissions status and annual fee details
+- An assistant panel explaining what each result is based on
+- Explicit notices when fees or deadlines are missing
+- No-match handling and accessible reset actions
 
-An LLM can make these interactions easier, but it should not invent fees, deadlines, admission status or school details when the platform data is incomplete.
+To try it, download `web/demo.html` and open it in a browser. It is a self-contained HTML file with no external requests.
 
-## What this prototype demonstrates
+## Engineering demonstration
 
-- structured filtering for hard constraints
-- text retrieval for relevance ranking
-- evidence bundles for grounding an LLM response
-- explicit handling of missing data
-- no-match behaviour instead of fabricated recommendations
-- separation of retrieval logic from the generation layer
-- tests for important edge cases
-- provider-neutral architecture that can later support an LLM API
+This portfolio also contains a separate Python retrieval prototype:
 
-## Files
+- [`retriever.py`](retriever.py): structured filtering, TF-IDF ranking and evidence bundle creation
+- [`sample_schools.json`](sample_schools.json): fictional example data
+- [`architecture.md`](architecture.md): system design and failure scenarios
+- [`evaluation-checklist.md`](evaluation-checklist.md): reliability, privacy, performance and cost considerations
+- [`tests/test_retriever.py`](tests/test_retriever.py): targeted edge-case tests
 
-- \`retriever.py\` - structured filtering, text ranking and grounding bundle generation
-- \`sample_schools.json\` - synthetic example data
-- \`architecture.md\` - system design, failure modes and production extensions
-- \`evaluation-checklist.md\` - reliability, privacy, retrieval and cost evaluation
-- \`tests/test_retriever.py\` - targeted edge-case tests
+### Run the Python prototype
 
-## Run locally
-
-\`\`\`bash
+```bash
 python -m venv .venv
 # Windows: .venv\Scripts\activate
 # Linux/macOS: source .venv/bin/activate
 pip install -r requirements.txt
 python retriever.py
 pytest -q
-\`\`\`
+```
 
-## Design choice: when not to use AI
+## Scope and current limitations
 
-Hard business rules, numeric filters, permissions and admissions status checks should remain deterministic. An LLM is most useful after retrieval, where it can explain verified results in natural language, ask clarifying questions and help a parent understand options.
+The HTML experience uses deterministic browser-side filtering and keyword matching; the Python script demonstrates evidence retrieval separately. The two parts are not yet connected through an API.
 
-## Possible next step
+**There is no live LLM API or real admissions integration in the demo.** It intentionally illustrates the user experience and the engineering controls that would be needed before adding an LLM.
 
-Add a small API layer and an LLM response adapter that accepts only the generated evidence bundle. The response should cite school record IDs and refuse to answer unsupported factual questions.
+In a production implementation, an LLM would receive only the retrieved evidence, cite record identifiers, and state uncertainty for missing or unverified values. Fees and admission deadlines should be checked with schools directly, and private student data should remain access-controlled.
+
+## Design principle
+
+Use deterministic code for permissions, hard constraints and numeric filtering. Use AI where it genuinely helps interpret a parent's request or explain grounded results, rather than asking it to invent factual school information.
