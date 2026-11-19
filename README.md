@@ -1,83 +1,46 @@
 # Systems Analysis Portfolio
 
-A public portfolio of fictional and anonymised systems-analysis work covering business problems, process mapping, requirements, user stories, acceptance criteria, UAT, implementation planning and applied AI design.
+A portfolio of fictional and anonymised examples showing how I translate business problems into requirements, workflows, working prototypes and testable solutions.
 
-## Purpose
+## Demonstrations
 
-This repository demonstrates how I move from an operational problem to a structured, testable digital-solution plan.
+### 1. Procurement workflow improvement
 
-The focus is not only on software. It is on understanding how people work, what rules and controls matter, where delays or risks occur, and how a proposed system should improve the process.
+A fictional procurement-process case study including:
+- [Business requirements](requirements/procurement-brd-demo.md)
+- [User stories and acceptance criteria](requirements/procurement-user-stories-demo.md)
+- [Future-state process map](process-maps/procurement-workflow-demo.md)
+- [UAT test cases](uat/procurement-uat-demo.csv)
+- [Implementation plan](implementation/procurement-implementation-plan-demo.md)
+- [Case study](case-studies/procurement-workflow-case-study.md)
 
-## Portfolio structure
+### 2. School admissions AI concept
 
-- \`case-studies/\` - problem, analysis, proposed solution and expected value
-- \`requirements/\` - BRDs, functional requirements, user stories and acceptance criteria
-- \`process-maps/\` - current-state and future-state workflows
-- \`uat/\` - UAT planning and test cases
-- \`implementation/\` - phased implementation and handover planning
-- \`ai-demos/\` - applied AI architecture, retrieval, grounding and evaluation examples
-- \`confidentiality/\` - public-safe portfolio rules
+A fictional school-search and parent-support prototype demonstrating evidence-grounded recommendations, structured search, missing-data handling and edge-case testing.
 
-## Demonstration 1: Fictional procurement workflow
+- **[Explore the visual, interactive demonstration](ai-demos/eschool-admissions-assistant/web/demo.html)**
+- [Read the AI demo documentation](ai-demos/eschool-admissions-assistant/README.md)
+- [Inspect the Python retrieval code](ai-demos/eschool-admissions-assistant/retriever.py)
+- [Review architecture and reliability considerations](ai-demos/eschool-admissions-assistant/architecture.md)
 
-The first demonstration uses a fictional services company that currently manages procurement through email, spreadsheets and verbal follow-up.
+**Important:** The visual interface is a standalone, deterministic prototype. It does not call a live LLM or connect to actual school admissions services. Download the HTML file to open it locally.
 
-The case covers purchase requisitions, budget and approval checks, quotations, supplier selection, purchase orders, receipt, payment preparation, audit trail and status reporting.
+## Working method
 
-Start here:
-
-- \`case-studies/procurement-workflow-case-study.md\`
-- \`requirements/procurement-brd-demo.md\`
-- \`requirements/procurement-user-stories-demo.md\`
-- \`process-maps/procurement-workflow-demo.md\`
-- \`uat/procurement-uat-demo.csv\`
-- \`implementation/procurement-implementation-plan-demo.md\`
-
-## Demonstration 2: AI-assisted school admissions and parent support
-
-This applied AI demo shows a grounded school-discovery workflow using synthetic data.
-
-It demonstrates:
-
-- structured filtering before generation
-- relevance retrieval
-- evidence bundles for an LLM
-- missing-data handling
-- no-match behaviour instead of fabricated answers
-- privacy and prompt-injection considerations
-- cost-aware design
-- targeted automated tests
-
-Start here:
-
-- \`ai-demos/eschool-admissions-assistant/README.md\`
-- \`ai-demos/eschool-admissions-assistant/architecture.md\`
-- \`ai-demos/eschool-admissions-assistant/retriever.py\`
-- \`ai-demos/eschool-admissions-assistant/evaluation-checklist.md\`
-
-## Method
-
-1. Discovery and stakeholder understanding
-2. Current-state process mapping
-3. Gap, risk and control analysis
-4. Requirements and solution design
-5. Prototype or implementation support
-6. Testing, training, handover and improvement
+1. Understand the business problem and stakeholders
+2. Map the current process and identify gaps
+3. Define roles, requirements, business rules and acceptance criteria
+4. Design and prototype the workflow
+5. Test key scenarios and address exceptions
+6. Prepare implementation and handover documentation
 
 ## Confidentiality
 
-All public examples use fictional, anonymised or independently developed information. No client-owned code, credentials, internal records or identifiable data should be published.
-
-## Planned additions
-
-- Fictional SME digital-readiness assessment
-- IT service-management ticket lifecycle
-- Management dashboard requirements case
-- Additional UAT and traceability examples
+All examples in this repository use fictional or independent material. Client-owned code, internal records, credentials and identifiable personal information are not published. See [portfolio confidentiality rules](confidentiality/portfolio-confidentiality-rules.md).
 
 ## Contact
 
-Alex Wadaba  
+**Alex Wadaba**  
 Business & Systems Analyst | Systems Designer | Digital Solutions Consultant  
 Kampala, Uganda  
 Email: waddzalexson@gmail.com  
